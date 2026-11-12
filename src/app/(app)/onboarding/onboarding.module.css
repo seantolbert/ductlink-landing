@@ -1,0 +1,78 @@
+.page { width: 100%; max-width: 760px; margin: 0 auto; padding: 32px var(--gutter) 80px; }
+.loading { color: var(--ink-muted); padding: 40px 0; }
+
+/* Progress rail: numbered steps. Labels hide on small screens; the counter shows instead. */
+.rail { list-style: none; margin: 0 0 8px; padding: 0; display: flex; gap: 6px; }
+.railItem { flex: 1; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.railItem::before { content: ''; height: 3px; border-radius: 2px; background: var(--line); }
+.railItem[data-state='done']::before, .railItem[data-state='current']::before { background: var(--accent); }
+.railDot { display: none; }
+.railLabel { font-size: 0.8125rem; color: var(--ink-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.railItem[data-state='current'] .railLabel { color: var(--ink); font-weight: 600; }
+.counter { font-size: 0.875rem; color: var(--ink-muted); margin: 18px 0 0; }
+@media (max-width: 639px) { .railLabel { display: none; } }
+@media (min-width: 640px) { .counter { display: none; } .rail { margin-bottom: 36px; } }
+
+/* Step body */
+.head { margin: 16px 0 28px; }
+.title { font-size: clamp(1.625rem, 4vw, 2.25rem); font-weight: 800; }
+.lead { color: var(--ink-muted); margin-top: 10px; max-width: var(--measure); }
+.panel { background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; display: grid; gap: 20px; }
+@media (max-width: 479px) { .panel { padding: 18px; } }
+.row { display: grid; gap: 20px; }
+@media (min-width: 640px) { .row { grid-template-columns: 1fr 1fr; } }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-top: 28px; }
+.actionsEnd { display: flex; gap: 12px; margin-left: auto; }
+.status { font-size: 0.875rem; }
+.status[data-tone='ok'] { color: var(--ok); }
+.status[data-tone='bad'] { color: var(--error); }
+.status[data-tone='muted'] { color: var(--ink-muted); }
+
+/* Plan choice */
+.plans { display: grid; gap: 12px; }
+@media (min-width: 640px) { .plans { grid-template-columns: 1fr 1fr; } }
+.plan { position: relative; display: grid; gap: 4px; padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface-raised); cursor: pointer; }
+.plan:has(input:checked) { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent) inset; }
+.plan:has(input:focus-visible) { outline: 3px solid var(--accent); outline-offset: 2px; }
+.plan input { position: absolute; opacity: 0; pointer-events: none; }
+.planName { font-weight: 700; font-family: var(--font-heading); }
+.planNote { color: var(--ink-muted); font-size: 0.875rem; }
+.checklist { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; color: var(--ink-muted); }
+
+/* Branding preview: the ordering app's header as the tech will see it. */
+.preview { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: #eef1f4; max-width: 360px; }
+.previewBar { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: #1b2430; color: #f3f5f7; font-weight: 600; min-height: 56px; }
+.previewLogo { width: 32px; height: 32px; border-radius: 6px; object-fit: contain; background: #fff; }
+.previewBody { padding: 14px; display: grid; gap: 10px; }
+.previewCta { height: 40px; border-radius: 8px; display: grid; place-items: center; font-weight: 600; font-size: 0.9375rem; }
+.previewLine { height: 10px; border-radius: 5px; background: #d5dbe2; }
+.swatches { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.swatch { width: 36px; height: 36px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; padding: 0; }
+.swatch[aria-pressed='true'] { border-color: var(--ink); box-shadow: 0 0 0 2px var(--surface-raised) inset; }
+.colorInput { width: 44px; height: 36px; padding: 2px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface-raised); }
+.logoRow { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.logoThumb { width: 64px; height: 64px; border-radius: 8px; border: 1px solid var(--line); object-fit: contain; background: #fff; }
+
+/* Lists: contact methods, team */
+.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.listItem { display: flex; align-items: center; gap: 12px; justify-content: space-between; padding: 10px 12px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); min-height: var(--tap); }
+.listMain { min-width: 0; overflow-wrap: anywhere; }
+.listMeta { color: var(--ink-muted); font-size: 0.8125rem; }
+.inline { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
+.inline > .grow { flex: 1 1 220px; }
+
+/* Gauge toggles */
+.toggles { display: flex; gap: 10px; flex-wrap: wrap; }
+.toggle { display: inline-flex; align-items: center; gap: 10px; padding: 12px 16px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface-raised); cursor: pointer; font-weight: 600; min-height: var(--tap); }
+.toggle:has(input:checked) { border-color: var(--accent); background: #fbf1e7; }
+.toggle input { width: 18px; height: 18px; accent-color: var(--accent); }
+
+/* Go live */
+.live { display: grid; gap: 24px; }
+@media (min-width: 700px) { .live { grid-template-columns: 1fr 220px; align-items: start; } }
+.linkBox { display: flex; gap: 8px; align-items: stretch; }
+.linkText { flex: 1; min-width: 0; display: flex; align-items: center; padding: 0 12px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); font-weight: 600; overflow-wrap: anywhere; min-height: var(--tap); }
+.qr { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; display: grid; gap: 10px; justify-items: center; }
+.qr svg { width: 100%; height: auto; }
+.nextList { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.nextList a { font-weight: 600; }

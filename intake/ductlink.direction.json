@@ -1,0 +1,77 @@
+{
+  "slug": "ductlink",
+  "kind": "product-marketing",
+  "trade": "HVAC",
+  "trade_note": "DuctLink is software for HVAC sheet-metal fabrication shops. Buyers are shop owners; their customers are HVAC techs ordering fittings from a phone. HVAC preset applies; 3D is allowed because there is a real product to show (DuctLink's own parametric fittings).",
+  "palette": {
+    "source": "Logo (v1/public/favicon.svg): graphite #1b2430 ground, amber #f2a33a stroke. App accent (v1/src/styles.css): #d9751a.",
+    "roles": {
+      "ground-dark": { "hex": "#121922", "use": "hero and footer" },
+      "graphite": { "hex": "#1b2430", "use": "app header, dark bands" },
+      "surface": { "hex": "#f4f1ec", "use": "page background, warm neutral" },
+      "surface-raised": { "hex": "#ffffff", "use": "cards, form panels" },
+      "ink": { "hex": "#17202b", "use": "body text on light" },
+      "ink-muted": { "hex": "#4b5765", "use": "secondary text on light" },
+      "ink-on-dark": { "hex": "#f3f5f7", "use": "text on graphite" },
+      "ink-on-dark-muted": { "hex": "#c4ccd5", "use": "secondary text on dark" },
+      "accent": { "hex": "#d9751a", "use": "buttons, airflow line, focus rings; never body text on light" },
+      "accent-ink": { "hex": "#17202b", "use": "text on accent buttons" },
+      "accent-text": { "hex": "#9e4f0a", "use": "links and accent text on light surfaces" },
+      "accent-on-dark": { "hex": "#f2a33a", "use": "logo amber; accent text and airflow line on dark" },
+      "line": { "hex": "#d8d2c8", "use": "hairlines on warm surface" }
+    },
+    "contrast_checks": {
+      "ink on surface": 14.59,
+      "ink-muted on surface": 6.54,
+      "accent-text on surface": 5.21,
+      "accent-ink on accent": 5.09,
+      "ink-on-dark on graphite": 15.65,
+      "ink-on-dark-muted on ground-dark": 10.9,
+      "accent-on-dark on graphite": 7.51,
+      "accent on white (non-text only)": 3.23
+    }
+  },
+  "type": {
+    "heading": "Manrope",
+    "body": "Inter",
+    "mono": null,
+    "note": "Approved list, HVAC preset. Dimensions in the product UI stay in the body face with tabular numerals."
+  },
+  "motion": {
+    "concept": "Airflow path",
+    "description": "The hero shows a real DuctLink fitting (rendered from the app's own geometry) slowly turning, with its dimension lines drawn in. From the fitting's outlet a single 2px amber line runs down the page as the visitor scrolls, branching once at each step of 'How it works' (tech's phone -> shop inbox -> ready for pickup) and ending at the sign-up button.",
+    "implementation": {
+      "hero": "React Three Fiber + Drei, dynamically imported with ssr:false. One fitting, no environment map, flat material.",
+      "path": "Inline SVG path, stroke-dashoffset scrubbed by GSAP ScrollTrigger. Lenis smooth scroll in the root layout.",
+      "duration_rules": "No element animates for more than 600ms outside scroll scrub. No parallax on text."
+    },
+    "fallbacks": {
+      "below_768px": "Static hero image (public/hero-static.webp, a render of the same fitting). Airflow line is drawn fully, no scrub.",
+      "prefers_reduced_motion": "Same as mobile: static image, line fully drawn, Lenis off."
+    },
+    "budget": "Under 300 KB JS on /, under 1.5 MB first load excluding images."
+  },
+  "copy_voice": {
+    "tone": "Plain, direct, shop-floor. Written for the owner of a fab shop who takes orders by phone, text, and scribbled sketches today.",
+    "do": [
+      "Name the real parts: elbows, transitions, offsets, filter boxes, collars, plenums.",
+      "Name the real pain: misread sketches, missing dimensions, orders lost in texts.",
+      "Say what the product does, step by step."
+    ],
+    "dont": [
+      "No invented customer counts, testimonials, time-saved percentages, or logos.",
+      "No 'revolutionize', 'seamless', 'AI-powered'.",
+      "No pricing numbers until the owner sets them."
+    ]
+  },
+  "hero_image": {
+    "source": "Own render of DuctLink's parametric fitting geometry (v1/src/shapes). No third-party models or stock photography.",
+    "rights_status": "owned"
+  },
+  "open_questions": [
+    "Monthly and/or annual price amounts.",
+    "Production domain (assumed ductlink.com for marketing, app.ductlink.com for the app).",
+    "Any real shop willing to be quoted? Until then the page has no testimonials.",
+    "Instructional videos to record (catalog drafted in src/content/videos.ts)."
+  ]
+}

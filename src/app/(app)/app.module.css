@@ -1,0 +1,18 @@
+.shell { min-height: 100dvh; display: flex; flex-direction: column; }
+
+.bar {
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 60px; padding: 0 var(--gutter);
+  background: var(--graphite); color: var(--ink-on-dark);
+}
+.bar a { text-decoration: none; }
+.barLink { color: var(--ink-on-dark-muted) !important; font-size: 0.9375rem; font-weight: 500; }
+.barLink:hover { color: var(--ink-on-dark) !important; }
+
+/* Single-column card for sign-up and sign-in. */
+.narrow { width: 100%; max-width: 440px; margin: 0 auto; padding: 48px var(--gutter) 64px; }
+.title { font-size: clamp(1.75rem, 4vw, 2.125rem); font-weight: 800; }
+.lead { color: var(--ink-muted); margin-top: 10px; }
+.form { display: grid; gap: 18px; margin-top: 28px; }
+.after { margin-top: 22px; color: var(--ink-muted); font-size: 0.9375rem; }
+.linkButton { background: none; border: 0; padding: 0; color: var(--accent-text); text-decoration: underline; text-underline-offset: 0.18em; cursor: pointer; font-weight: 500; }
